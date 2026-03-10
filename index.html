@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipper AI Terminal</title>
+    <style>
+        body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; }
+        
+        /* Контейнер Flipper */
+        .flipper-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 1px solid #00ff00;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .pepe-logo { width: 100px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #333; }
+
+        h2 { color: #00ff00; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+
+        .status-badge { background: #222; color: #00ff00; padding: 5px 10px; border-radius: 5px; font-size: 12px; font-family: monospace; display: inline-block; margin-bottom: 20px; }
+
+        /* Кнопки бирж */
+        .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        
+        .btn {
+            background: #111;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover { border-color: #00ff00; background: #1a1a1a; box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
+
+        /* Панель анализа */
+        #analysis-result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #000;
+            border-radius: 10px;
+            text-align: left;
+            border-left: 4px solid #00ff00;
+        }
+
+        .data-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+        .data-label { color: #888; }
+        .data-value { color: #00ff00; font-weight: bold; }
+
+        .verdict { margin-top: 15px; text-align: center; font-weight: bold; padding: 10px; border-radius: 5px; }
+        .buy { background: rgba(0, 255, 0, 0.1); color: #00ff00; border: 1px solid #00ff00; }
+    </style>
+</head>
+<body>
+
+<div class="flipper-card">
+    <img src="https://i.ibb.co/v6XkX8V/pepe-flipper.png" alt="Plush Pepe Flipper" class="pepe-logo">
+    <h2>Flipper AI</h2>
+    <div class="status-badge">SYSTEM: ONLINE</div>
+    
+    <p style="font-size: 14px; color: #aaa;">Выберите биржу для поиска активных сделок по Plush Pepe</p>
+
+    <div class="market-grid">
+        <button class="btn" onclick="startAnalysis('Getgems')">GETGEMS</button>
+        <button class="btn" onclick="startAnalysis('Fragment')">FRAGMENT</button>
+        <button class="btn" onclick="startAnalysis('Tonnel')">TONNEL</button>
+        <button class="btn" onclick="startAnalysis('Portals')">PORTALS</button>
+    </div>
+
+    <div id="analysis-result">
+        <div style="text-align: center; margin-bottom: 10px; font-weight: bold;">АНАЛИЗ: PLUSH PEPE</div>
+        <div class="data-row">
+            <span class="data-label">Активность (24ч):</span>
+            <span class="data-value" id="activity-val">Загрузка...</span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">Текущий Floor:</span>
+            <span class="data-value">7,100 TON</span>
+        </div>
+        <div class="data-row">
+
