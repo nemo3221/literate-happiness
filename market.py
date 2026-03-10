@@ -22,6 +22,7 @@ async def fetch_gift_listings(gift_name: str = None, limit: int = 100):
         await client.start()
         async with client:
             result = await client(GetResaleStarGiftsRequest(
+            gift_id=0,
                 offset="",
                 limit=limit,
             ))
