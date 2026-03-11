@@ -8,18 +8,18 @@
     <style>
         body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
         .container { text-align: center; width: 90%; }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; letter-spacing: 5px; text-shadow: 0 0 10px #00ff00; }
-        .pepe-img { width: 200px; height: auto; margin: 20px 0; border: 2px solid #00ff00; border-radius: 15px; padding: 10px; box-shadow: 0 0 20px rgba(0, 255, 0, 0.3); }
-        .status-text { font-size: 0.9rem; margin-bottom: 30px; color: #008800; }
-        .btn-group { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; margin: 0 auto; }
-        button { background: transparent; border: 1px solid #00ff00; color: #00ff00; padding: 15px; font-size: 1rem; cursor: pointer; border-radius: 5px; transition: 0.3s; text-transform: uppercase; }
-        button:active { background: #00ff00; color: #000; }
+        h1 { font-size: 2.5rem; margin-bottom: 5px; letter-spacing: 5px; text-shadow: 0 0 10px #00ff00; color: #00ff00; }
+        .pepe-img { width: 220px; height: auto; margin: 15px 0; border-radius: 20px; box-shadow: 0 0 25px rgba(0, 255, 0, 0.4); }
+        .status-text { font-size: 1rem; margin-bottom: 25px; color: #00cc00; font-weight: bold; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 280px; margin: 0 auto; }
+        button { background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; color: #00ff00; padding: 14px; font-size: 1.1rem; cursor: pointer; border-radius: 8px; transition: 0.2s; text-transform: uppercase; font-weight: bold; }
+        button:active { background: #00ff00; color: #000; transform: scale(0.95); }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>FLIPPER</h1>
-        <img src="pepe_plush.png" alt="Pepe Plush" class="pepe-img">
+        <img src="https://i.ibb.co/v4S8f4f/pepe-plush-transparent.png" alt="Pepe Plush" class="pepe-img">
         <div class="status-text">выберите биржу</div>
         <div class="btn-group">
             <button onclick="handleBtn('GetGems')">GetGems</button>
@@ -28,10 +28,10 @@
     </div>
     <script>
         const tg = window.Telegram.WebApp;
-        tg.expand();
+        tg.expand(); // Открывает на весь экран
         function handleBtn(name) {
-            tg.HapticFeedback.impactOccurred('medium');
-            alert('Поиск сделок на ' + name + '...');
+            tg.HapticFeedback.impactOccurred('medium'); // Вибрация
+            alert('Поиск активных сделок на ' + name + '...');
         }
     </script>
 </body>
