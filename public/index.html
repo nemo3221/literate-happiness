@@ -3,117 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FLIPPER ULTRA</title>
+    <title>FLIPPER</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
+        /* Стиль в точности как ты утвердил */
         body { 
-            background: linear-gradient(-45deg, #000000, #0f172a, #1e293b, #020617);
-            background-size: 400% 400%;
-            animation: gradientMove 8s ease infinite; /* Ускорили волны */
-            color: #ffffff; 
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; 
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%) no-repeat;
+            background-color: #000;
+            color: #fff; 
+            font-family: sans-serif; 
             text-align: center; 
-            margin: 0; padding: 0;
-            display: flex; flex-direction: column; align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+            margin: 0; padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .container {
-            margin-top: 40px;
-            width: 90%;
-            max-width: 400px;
-        }
-
         h1 { 
-            font-size: 36px;
-            letter-spacing: 10px; 
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+            margin-top: 30px; 
+            letter-spacing: 2px; 
+            font-weight: 900; 
+            font-size: 32px;
         }
-
-        .img-wrapper {
-            position: relative;
-            display: inline-block;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        /* Неоновое свечение под Пепе */
-        .img-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: -10px; left: 10%;
-            width: 80%; height: 20px;
-            background: rgba(0, 122, 255, 0.4);
-            filter: blur(25px);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
         img { 
             width: 220px; 
-            border-radius: 40px; 
-            border: 2px solid rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 10px 50px rgba(0,0,0,0.8);
+            border-radius: 20px; 
+            margin: 20px 0; 
+            border: 1px solid #333; 
         }
-
         .btn { 
             display: block; 
-            background: rgba(255, 255, 255, 0.07);
-            color: #ffffff; 
-            padding: 22px; 
-            margin: 18px 0; 
-            border-radius: 24px; 
+            background: #111; 
+            color: #fff; 
+            padding: 18px; 
+            margin: 10px auto; 
+            width: 85%; 
+            max-width: 350px;
+            border-radius: 12px; 
             text-decoration: none; 
-            font-weight: 700; 
-            font-size: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px); /* Сильное размытие фона (стекло) */
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-weight: 900; 
+            font-size: 16px;
+            border: 1px solid #444; 
         }
-
-        .btn:hover { 
-            background: rgba(0, 122, 255, 0.2);
-            border-color: #007aff;
-            transform: scale(1.02);
-        }
-
-        .btn:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>FLIPPER</h1>
-        
-        <div class="img-wrapper">
-            <img src="pepe_plush.png" alt="Pepe">
-        </div>
-        
-        <a href="https://getgems.io" class="btn">💎 GETGEMS</a>
-        <a href="https://fragment.com" class="btn">🧩 FRAGMENT</a>
-    </div>
+    <h1>FLIPPER</h1>
+    
+    <img src="pepe_plush.png" alt="Pepe">
+    
+    <a href="https://getgems.io" class="btn">GETGEMS</a>
+    <a href="https://fragment.com" class="btn">FRAGMENT</a>
 
     <script>
-        const tele = window.Telegram.WebApp;
-        tele.ready();
-        tele.expand();
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
     </script>
 </body>
 </html>
