@@ -6,78 +6,37 @@
     <title>FLIPPER</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
+        /* ВОЗВРАЩАЕМ УТВЕРЖДЕННЫЙ ДИЗАЙН */
         body { 
-            background: #000; 
-            color: #fff; 
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+            color: #ffffff; 
             font-family: sans-serif; 
             text-align: center; 
-            padding: 20px; 
+            margin: 0; padding: 20px;
         }
         h1 { 
-            font-size: 40px; 
+            font-size: 32px; 
             font-weight: 900; 
-            margin-bottom: 20px; 
+            margin-top: 40px; 
+            letter-spacing: 2px;
         }
         img { 
-            width: 230px; 
+            width: 220px; 
             border-radius: 20px; 
-            margin-bottom: 20px; 
+            margin: 20px 0; 
         }
         .btn { 
             display: block; 
-            background: #222; 
-            color: #fff; 
-            padding: 18px; 
-            margin: 10px auto; 
-            width: 85%; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            font-weight:
-# 1. Заходим в проект
-cd ~/projects/literate-happiness
-
-# 2. Убеждаемся, что картинка на месте в папке public
-cp pepe_plush.png public/ 2>/dev/null
-
-# 3. Возвращаем старый дизайн (жирный шрифт, как просил)
-cat <<EOF > public/index.html
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FLIPPER</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body { 
-            background: #000; 
-            color: #fff; 
-            font-family: sans-serif; 
-            text-align: center; 
+            background: #111111; 
+            color: #ffffff; 
             padding: 20px; 
-        }
-        h1 { 
-            font-size: 40px; 
-            font-weight: 900; 
-            margin-bottom: 20px; 
-        }
-        img { 
-            width: 230px; 
-            border-radius: 20px; 
-            margin-bottom: 20px; 
-        }
-        .btn { 
-            display: block; 
-            background: #222; 
-            color: #fff; 
-            padding: 18px; 
             margin: 10px auto; 
             width: 85%; 
-            border-radius: 12px; 
+            border-radius: 15px; 
             text-decoration: none; 
             font-weight: 900; 
-            font-size: 18px;
-            border: 1px solid #444; 
+            font-size: 16px;
+            border: 1px solid #333;
         }
     </style>
 </head>
