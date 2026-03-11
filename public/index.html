@@ -2,32 +2,81 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLIPPER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FLIPPER PREMIUM</title>
     <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         body { 
-            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%) no-repeat;
-            background-color: #000;
-            color: #fff; 
-            font-family: sans-serif; 
+            /* Живой градиент: черный, темно-серый и глубокий золотисто-коричневый */
+            background: linear-gradient(-45deg, #000000, #1a1a1a, #2c2416, #000000);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #ffffff; 
+            font-family: 'Inter', -apple-system, sans-serif; 
             text-align: center; 
-            margin: 0; padding: 20px;
-            height: 100vh;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh;
         }
-        h1 { margin-top: 30px; letter-spacing: 2px; }
-        img { width: 220px; border-radius: 20px; margin: 20px 0; border: 1px solid #333; }
+
+        h1 { 
+            margin-top: 50px; 
+            font-size: 28px;
+            letter-spacing: 5px; 
+            font-weight: 200; /* Тонкий шрифт выглядит дороже */
+            text-transform: uppercase;
+            color: #c5a059; /* Золотистый акцент */
+        }
+
+        img { 
+            width: 230px; 
+            border-radius: 30px; 
+            margin: 30px 0; 
+            border: 1px solid rgba(197, 160, 89, 0.3); /* Тонкая золотая рамка */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .btn-container { width: 90%; max-width: 380px; }
+
         .btn { 
-            display: block; background: #111; color: #fff; 
-            padding: 18px; margin: 10px auto; width: 80%; 
-            border-radius: 12px; text-decoration: none; 
-            font-weight: bold; border: 1px solid #444; 
+            display: block; 
+            background: rgba(255, 255, 255, 0.03); /* Эффект стекла */
+            color: #ffffff; 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
+
+        .btn:hover { 
+            border-color: #c5a059; /* При наведении рамка золотеет */
+            background: rgba(197, 160, 89, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .btn:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
     <h1>FLIPPER</h1>
+    
     <img src="pepe_plush.png" alt="Pepe">
-    <a href="https://getgems.io" class="btn">GETGEMS</a>
-    <a href="https://fragment.com" class="btn">FRAGMENT</a>
+    
+    <div class="btn-container">
+        <a href="https://getgems.io" class="btn">GETGEMS</a>
+        <a href="https://fragment.com" class="btn">FRAGMENT</a>
+    </div>
 </body>
 </html>
