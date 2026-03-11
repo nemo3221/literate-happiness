@@ -2,89 +2,37 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flipper AI Terminal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flipper</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { background-color: #0d0d0d; color: #e0e0e0; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; }
-        
-        /* Контейнер Flipper */
-        .flipper-card {
-            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            border: 1px solid #00ff00;
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .pepe-logo { width: 100px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #333; }
-
-        h2 { color: #00ff00; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
-
-        .status-badge { background: #222; color: #00ff00; padding: 5px 10px; border-radius: 5px; font-size: 12px; font-family: monospace; display: inline-block; margin-bottom: 20px; }
-
-        /* Кнопки бирж */
-        .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        
-        .btn {
-            background: #111;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover { border-color: #00ff00; background: #1a1a1a; box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
-
-        /* Панель анализа */
-        #analysis-result {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #000;
-            border-radius: 10px;
-            text-align: left;
-            border-left: 4px solid #00ff00;
-        }
-
-        .data-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
-        .data-label { color: #888; }
-        .data-value { color: #00ff00; font-weight: bold; }
-
-        .verdict { margin-top: 15px; text-align: center; font-weight: bold; padding: 10px; border-radius: 5px; }
-        .buy { background: rgba(0, 255, 0, 0.1); color: #00ff00; border: 1px solid #00ff00; }
+        body { background-color: #000; color: #00ff00; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        .container { text-align: center; width: 90%; }
+        h1 { font-size: 2.5rem; margin-bottom: 5px; letter-spacing: 5px; text-shadow: 0 0 10px #00ff00; color: #00ff00; }
+        .pepe-img { width: 220px; height: auto; margin: 15px 0; border-radius: 20px; box-shadow: 0 0 25px rgba(0, 255, 0, 0.4); }
+        .status-text { font-size: 1rem; margin-bottom: 25px; color: #00cc00; font-weight: bold; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 280px; margin: 0 auto; }
+        button { background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; color: #00ff00; padding: 14px; font-size: 1.1rem; cursor: pointer; border-radius: 8px; transition: 0.2s; text-transform: uppercase; font-weight: bold; }
+        button:active { background: #00ff00; color: #000; transform: scale(0.95); }
     </style>
 </head>
 <body>
-
-<div class="flipper-card">
-    <img src="https://i.ibb.co/v6XkX8V/pepe-flipper.png" alt="Plush Pepe Flipper" class="pepe-logo">
-    <h2>Flipper AI</h2>
-    <div class="status-badge">SYSTEM: ONLINE</div>
-    
-    <p style="font-size: 14px; color: #aaa;">Выберите биржу для поиска активных сделок по Plush Pepe</p>
-
-    <div class="market-grid">
-        <button class="btn" onclick="startAnalysis('Getgems')">GETGEMS</button>
-        <button class="btn" onclick="startAnalysis('Fragment')">FRAGMENT</button>
-        <button class="btn" onclick="startAnalysis('Tonnel')">TONNEL</button>
-        <button class="btn" onclick="startAnalysis('Portals')">PORTALS</button>
+    <div class="container">
+        <h1>FLIPPER</h1>
+        <img src="https://i.ibb.co/v4S8f4f/pepe-plush-transparent.png" alt="Pepe Plush" class="pepe-img">
+        <div class="status-text">выберите биржу</div>
+        <div class="btn-group">
+            <button onclick="handleBtn('GetGems')">GetGems</button>
+            <button onclick="handleBtn('Fragment')">Fragment</button>
+        </div>
     </div>
-
-    <div id="analysis-result">
-        <div style="text-align: center; margin-bottom: 10px; font-weight: bold;">АНАЛИЗ: PLUSH PEPE</div>
-        <div class="data-row">
-            <span class="data-label">Активность (24ч):</span>
-            <span class="data-value" id="activity-val">Загрузка...</span>
-        </div>
-        <div class="data-row">
-            <span class="data-label">Текущий Floor:</span>
-            <span class="data-value">7,100 TON</span>
-        </div>
-        <div class="data-row">
-
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Открывает на весь экран
+        function handleBtn(name) {
+            tg.HapticFeedback.impactOccurred('medium'); // Вибрация
+            alert('Поиск активных сделок на ' + name + '...');
+        }
+    </script>
+</body>
+</html>
